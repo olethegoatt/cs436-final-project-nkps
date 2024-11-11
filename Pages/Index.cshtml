@@ -25,17 +25,24 @@
                 </thead>
 
                 <tbody>
-                    @foreach (var item in Model.listEmails)
+                    @foreach (var item in Model.listEmails.OrderByDescending(e => e.EmailDate)) // Sort emails by date in descending order
+
                     {
+
+                        // Adjust the date to UTC+7
+
+                        var emailDate = item.EmailDate.ToUniversalTime().AddHours(7);
+
                         <tr>
                             <td class="text-dark">@item.EmailSender</td>
                             <td>
-                                @if (item.EmailIsRead.Equals("0")) {
-                                    <img src="images/yellow.gif" height="10pt" alt="Unread Email"> 
-                                } 
+                                @if (item.EmailIsRead.Equals("0"))
+                                {
+                                    <img src="images/yellow.gif" height="10pt" alt="Unread Email">
+                                }
                                 <a href="ReadEmail?emailid=@item.EmailID" class="text-dark text-decoration-none fw-bold text-decoration-underline">@item.EmailSubject</a>
                             </td>
-                            <td class="text-dark">@item.EmailDate</td>
+                            <td class="text-dark">@emailDate.ToString("yyyy-MM-dd HH:mm")</td> <!-- Display date in UTC+7 format -->
                             <td>
                                 <a class="btn btn-danger btn-sm shadow-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>
                             </td>
