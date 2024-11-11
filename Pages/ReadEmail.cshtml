@@ -4,22 +4,31 @@
     ViewData["Title"] = "Read Email";
 }
 
-<h1>Email Details</h1>
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Email Details</h3>
+        </div>
+        <div class="card-body">
+            @if (Model.emailInfo != null)
+            {
+                <h2 class="card-title">@Model.emailInfo.EmailSubject</h2>
+                <p class="card-text"><strong>Sender:</strong> @Model.emailInfo.EmailSender</p>
+                <p class="card-text"><strong>Receiver:</strong> @Model.emailInfo.EmailReceiver</p>
+                <p class="card-text"><strong>Date sent:</strong> @Model.emailInfo.EmailDate</p>
 
-@if (Model.emailInfo != null)
-{
-    <div>
-        <h2>@Model.emailInfo.EmailSubject</h2>
-        <p>Sender: @Model.emailInfo.EmailSender</p>
-        <p>Receiver: @Model.emailInfo.EmailReceiver</p>
-        <p>Date sent: @Model.emailInfo.EmailDate</p>
-        <br />
-        <p>@Model.emailInfo.EmailMessage</p>
-        <br />
-        <a class="btn btn-primary btn-sm" href="/ComposeMail?Sender=@User.Identity?.Name&Receiver=@Model.emailInfo.EmailSender&Subject=Re: @Model.emailInfo.EmailSubject">Reply</a>
+                <hr />
+
+                <p class="card-text">@Model.emailInfo.EmailMessage</p>
+
+                <div class="mt-3">
+                    <a class="btn btn-primary btn-sm" href="/ComposeMail?Sender=@User.Identity?.Name&Receiver=@Model.emailInfo.EmailSender&Subject=Re: @Model.emailInfo.EmailSubject">Reply</a>
+                </div>
+            }
+            else
+            {
+                <p class="text-center">Email not found.</p>
+            }
+        </div>
     </div>
-}
-else
-{
-    <p>Email not found.</p>
-}
+</div>

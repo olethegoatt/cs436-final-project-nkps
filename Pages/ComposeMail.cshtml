@@ -6,27 +6,30 @@
     var subject = Request.Query["Subject"];
 }
 
-<h1>Compose an email</h1>
+<div class="container my-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Compose an Email</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="receiver" class="form-label text-dark">Receiver</label>
+                    <input name="Receiver" type="text" id="receiver" class="form-control" value="@receiver" required />
+                </div>
 
-<form method="post">
-    <div>
-        <label for="receiver">Receiver</label>
-        <input name="Receiver" type="text" id="receiver" value="@receiver" />
+                <div class="mb-3">
+                    <label for="subject" class="form-label text-dark">Subject</label>
+                    <input name="Subject" type="text" id="subject" class="form-control" value="@subject" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="body" class="form-label text-dark">Body</label>
+                    <textarea id="body" name="Body" class="form-control" rows="6" placeholder="Type your message here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Send</button>
+            </form>
+        </div>
     </div>
-
-    <div>
-        <label for="subject">Subject</label>
-        <input name="Subject" type="text" id="subject" value="@subject" />
-    </div>
-
-    <div>
-        <label for="body">Body</label>
-        <textarea id="body" name="Body" rows="4" cols="50" placeholder="Type your message here..."></textarea>
-    </div>
-
-    <button type="submit">Send</button>
-</form>
-
-
-
-
+</div>

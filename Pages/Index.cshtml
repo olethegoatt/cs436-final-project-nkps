@@ -4,34 +4,49 @@
     ViewData["Title"] = "Home page";
 }
 
-<center><img src="images/logo.jpg" width="400" /></center>
+<div class="container my-5 text-center">
+    <img src="images/logo.jpg" class="img-fluid" width="400" alt="Logo" />
+</div>
 
-<table class="table">
-    <thread>
-        <tr>
-            <th>From</th>
-            <th>Subject</th>
-            <th>Date/Time</th>
-            <th>Delete</th>
-        </tr>
-    </thread>
+<div class="container my-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Inbox</h4>
+        </div>
+        <div class="card-body text-dark">
+            <table class="table table-striped table-hover table-bordered align-middle text-dark">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">From</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
 
-    <tbody>
-        @foreach (var item in Model.listEmails)
-        {
-            <tr>
-                <td>@item.EmailSender</td>
-                <td>
-                    @if (item.EmailIsRead.Equals("0")) {
-                        <img src="images/yellow.gif" height="10pt"> 
-                    } 
-                    <a href="ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
-                <td>@item.EmailDate</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-<a class="btn btn-primary btn-sm" href="/ComposeMail?Sender=@User.Identity.Name">Compose New Email</a>
+                <tbody>
+                    @foreach (var item in Model.listEmails)
+                    {
+                        <tr>
+                            <td class="text-dark">@item.EmailSender</td>
+                            <td>
+                                @if (item.EmailIsRead.Equals("0")) {
+                                    <img src="images/yellow.gif" height="10pt" alt="Unread Email"> 
+                                } 
+                                <a href="ReadEmail?emailid=@item.EmailID" class="text-dark text-decoration-none fw-bold text-decoration-underline">@item.EmailSubject</a>
+                            </td>
+                            <td class="text-dark">@item.EmailDate</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm shadow-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="text-end mt-4">
+        <a class="btn btn-success btn-lg shadow-lg" href="/ComposeMail?Sender=@User.Identity?.Name">Compose New Email</a>
+    </div>
+</div>
