@@ -4,48 +4,142 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="container mt-5">
-    <h3 class="text-center fw-bold">@ViewData["Title"]</h3>
+<!-- Include Bootstrap CSS (if not already included) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation" novalidate>
-        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+<style>
+    /* Apply Comic Sans font to the entire page */
+    body {
+        font-family: 'Comic Sans MS', sans-serif;
+        color: #ffffff; /* Text color for the body */
+        margin: 0;
+        height: 100vh;
+        background-color: #6960EC; /* Purple background for the whole page */
+    }
 
-        <div class="row g-3">
-            <div class="col-md-6">
-                <label asp-for="Input.FirstName" class="form-label fw-bold ">First Name</label>
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" required />
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
+    /* Left Section (Welcome Message) */
+    .left-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height of the screen */
+        flex: 1;
+    }
 
-            <div class="col-md-6">
-                <label asp-for="Input.LastName" class="form-label fw-bold">Last Name</label>
-                <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" required />
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
+        .left-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff; /* White text for the left section */
+        }
 
-            <div class="col-md-6">
-                <label asp-for="Input.MobilePhone" class="form-label fw-bold ">Mobile Phone</label>
-                <input asp-for="Input.MobilePhone" class="form-control" autocomplete="mobilephone" required />
-                <span asp-validation-for="Input.MobilePhone" class="text-danger"></span>
-            </div>
+    /* Right Section (Register Form) */
+    .right-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height of the screen */
+        flex: 1;
+    }
 
-            <div class="col-md-6">
-                <label asp-for="Input.UserName" class="form-label fw-bold">Username</label>
-                <input asp-for="Input.UserName" class="form-control" autocomplete="username" required />
-                <span asp-validation-for="Input.UserName" class="text-danger"></span>
-            </div>
+    /* Register Card Styling */
+    .register-card {
+        background-color: #ffffff; /* White background for register card */
+        border: 2px solid #6960EC; /* Purple border for the register card */
+        border-radius: 10px;
+        padding: 40px; /* เพิ่ม padding ใหญ่ขึ้น */
+        width: 100%;
+        height: 550px; /* เพิ่มความสูงของ register card */
+        max-width: 450px; /* เพิ่มความกว้าง */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
-            <div class="col-md-12">
-                <label asp-for="Input.Password" class="form-label fw-bold">Password</label>
-                <input asp-for="Input.Password" type="password" class="form-control" autocomplete="new-password" required />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
+        .register-card h3 {
+            font-weight: bold;
+            color: #6960EC; /* Purple text for the register card title */
+            margin-bottom: 30px; /* เพิ่มระยะห่างจากฟอร์ม */
+        }
 
-            <div class="col-12 text-center">
-                <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg mt-4">Register</button>
+    .form-control:focus {
+        border-color: #6960EC;
+        box-shadow: none;
+    }
+
+    .btn-primary {
+        background-color: #6960EC;
+        border: none;
+        width: 100%;
+        color: #ffffff;
+    }
+
+        .btn-primary:hover {
+            background-color: #5a50e0;
+        }
+
+    .text-primary {
+        color: #6960EC !important;
+    }
+
+    .text-dark {
+        color: #000000 !important;
+    }
+</style>
+
+<div class="container-fluid vh-100">
+    <div class="row h-100">
+        <!-- Left Section -->
+        <div class="col-md-6 left-section">
+            <h2>Join Us Today!</h2>
+        </div>
+
+        <!-- Right Section with Register Form -->
+        <div class="col-md-6 right-section">
+            <div class="register-card">
+                <h3>@ViewData["Title"]</h3> <!-- Title section with margin-bottom -->
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <!-- Change label text color to the same color as Register Card -->
+                            <label asp-for="Input.FirstName" class="form-label fw-bold text-primary">First Name</label>
+                            <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" required />
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Input.LastName" class="form-label fw-bold text-primary">Last Name</label>
+                            <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" required />
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- Change label text color to the same color as Register Card -->
+                            <label asp-for="Input.MobilePhone" class="form-label fw-bold text-primary">Mobile Phone</label>
+                            <input asp-for="Input.MobilePhone" class="form-control" autocomplete="mobilephone" required />
+                            <span asp-validation-for="Input.MobilePhone" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Input.UserName" class="form-label fw-bold text-primary">Username</label>
+                            <input asp-for="Input.UserName" class="form-control" autocomplete="username" required />
+                            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="Input.Password" class="form-label fw-bold text-primary">Password</label>
+                            <input asp-for="Input.Password" type="password" class="form-control" autocomplete="new-password" required />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg mt-4">Register</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 @section Scripts {

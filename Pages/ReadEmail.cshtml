@@ -4,9 +4,53 @@
     ViewData["Title"] = "Read Email";
 }
 
+<!-- Custom Styles for font and background -->
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif; /* Set Comic Sans font */
+        background-color: #6960EC; /* Set background color to #6960EC */
+        color: #6960EC; /* Set text color to #6960EC */
+    }
+
+    .card-header {
+        background-color: #4B4BBF; /* Set darker background for card header */
+    }
+
+    .card-title {
+        color: #6960EC; /* Title text color to #6960EC */
+    }
+
+    .card-text {
+        color: #6960EC; /* Text color to #6960EC */
+    }
+
+    /* Styling for the Reply button (Green version) */
+    .btn-reply {
+        background-color: #28a745; /* Set button color to green */
+        border-color: #28a745;
+        color: white; /* White text for contrast */
+        font-weight: bold; /* Make button text bold */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        transition: all 0.3s ease; /* Smooth transition effect */
+    }
+
+        .btn-reply:hover {
+            background-color: #218838; /* Darker green color on hover */
+            border-color: #1e7e34;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+            transform: translateY(-2px); /* Slight upward movement */
+        }
+
+        .btn-reply:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(104, 144, 204, 0.5); /* Blue outline on focus */
+        }
+</style>
+
 <div class="container my-5">
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header text-white">
             <h3 class="mb-0">Email Details</h3>
         </div>
         <div class="card-body">
@@ -22,7 +66,8 @@
                 <p class="card-text">@Model.emailInfo.EmailMessage</p>
 
                 <div class="mt-3">
-                    <a class="btn btn-primary btn-sm" href="/ComposeMail?Sender=@User.Identity?.Name&Receiver=@Model.emailInfo.EmailSender&Subject=Re: @Model.emailInfo.EmailSubject">Reply</a>
+                    <!-- Modified Reply button with green color -->
+                    <a class="btn btn-reply btn-sm" href="/ComposeMail?Sender=@User.Identity?.Name&Receiver=@Model.emailInfo.EmailSender&Subject=Re: @Model.emailInfo.EmailSubject">Reply</a>
                 </div>
             }
             else

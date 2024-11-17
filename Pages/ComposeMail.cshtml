@@ -6,6 +6,40 @@
     var subject = Request.Query["Subject"];
 }
 
+@* Add the background color, font, and text color styles directly to the page *@
+<style>
+    /* Set background color */
+    body {
+        background-color: #6960EC; /* เปลี่ยนสีพื้นหลังเป็น #6960EC */
+        font-family: 'Comic Sans MS', sans-serif; /* เปลี่ยนฟอนต์เป็น Comic Sans */
+        color: #6960EC; /* เปลี่ยนสีตัวอักษรทั้งหมดเป็น #6960EC */
+    }
+
+    /* เปลี่ยนสีของ label, input, และ textarea ให้มีความชัดเจน */
+    .form-label, .card-header h4, input, textarea {
+        color: #6960EC; /* เปลี่ยนสีตัวอักษรให้เป็น #6960EC */
+    }
+
+    /* ปรับสีของปุ่ม Send ให้เป็น #6960EC */
+    .btn {
+        background-color: #6960EC; /* ปรับพื้นหลังของปุ่มเป็น #6960EC */
+        color: white; /* เปลี่ยนสีตัวอักษรในปุ่มเป็นสีขาว */
+        border: none; /* เอาขอบปุ่มออก */
+    }
+
+    /* เพิ่มสีสำหรับข้อความใน input, textarea เพื่อความชัดเจน */
+    input, textarea {
+        border-color: #6960EC; /* ทำให้ border ของ input, textarea เป็นสีเดียวกับตัวอักษร */
+    }
+
+    /* เปลี่ยนสีข้อความใน header ให้เป็นสีขาว */
+    .card-header h4 {
+        color: #ffffff; /* เปลี่ยนสีข้อความใน header เป็นสีขาว */
+    }
+
+
+</style>
+
 <div class="container my-5">
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
@@ -14,21 +48,21 @@
         <div class="card-body">
             <form method="post">
                 <div class="mb-3">
-                    <label for="receiver" class="form-label text-dark">Receiver</label>
+                    <label for="receiver" class="form-label">Receiver</label>
                     <input name="Receiver" type="text" id="receiver" class="form-control" value="@receiver" required />
                 </div>
 
                 <div class="mb-3">
-                    <label for="subject" class="form-label text-dark">Subject</label>
+                    <label for="subject" class="form-label">Subject</label>
                     <input name="Subject" type="text" id="subject" class="form-control" value="@subject" required />
                 </div>
 
                 <div class="mb-3">
-                    <label for="body" class="form-label text-dark">Body</label>
+                    <label for="body" class="form-label">Body</label>
                     <textarea id="body" name="Body" class="form-control" rows="6" placeholder="Type your message here..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-success btn-lg w-100 mt-3">Send</button>
+                <button type="submit" class="btn btn-lg w-100 mt-3">Send</button>
             </form>
         </div>
     </div>

@@ -4,16 +4,54 @@
     ViewData["Title"] = "Home page";
 }
 
+<!-- Apply Comic Sans font globally and set the background color -->
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #6960EC;
+    }
+    .card-header {
+        background-color: #4B4BBF; /* A darker purple for card header */
+    }
+    .btn-primary {
+        background-color: #4B4BBF; /* Update primary button color */
+        border-color: #4B4BBF;
+    }
+    .btn-success {
+        background-color: #4BBF5E; /* Adjust success button color */
+        border-color: #4BBF5E;
+    }
+    .btn-danger {
+        background-color: #D9534F; /* Adjust delete button color */
+        border-color: #D9534F;
+    }
+
+    /* Styling for the table header */
+    .table th {
+        background-color: white; /* White background for headers */
+        color: #6960EC; /* Text color for headers */
+    }
+
+    /* Set table and cell borders to the desired color */
+    .table, .table th, .table td {
+        border: 1px solid #6960EC; /* Set the border color to #6960EC */
+    }
+
+    /* Change the text color in table cells (td) to #6960EC */
+    .table td {
+        color: #6960EC; /* Text color for table data */
+    }
+</style>
+
 <div class="container my-5 text-center">
-    <img src="images/logo.jpg" class="img-fluid" width="400" alt="Logo" />
+    <img src="images/nkps_logo.png" class="img-fluid" width="400" alt="Logo" />
 </div>
 
 @if (User.Identity.IsAuthenticated)
-
 {
     <div class="container my-4">
         <div class="card shadow-lg">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header text-white">
                 <h4 class="mb-0">Inbox</h4>
             </div>
             <div class="card-body text-dark">
@@ -29,7 +67,6 @@
 
                     <tbody>
                         @foreach (var item in Model.listEmails.OrderByDescending(e => e.EmailDate)) // Sort emails by date in descending order
-
                         {
                             // Adjust the date to UTC+7
                             var emailDate = item.EmailDate.ToUniversalTime().AddHours(7);
@@ -38,7 +75,6 @@
                                 <td class="text-dark">@item.EmailSender</td>
                                 <td>
                                     @if (item.EmailIsRead.Equals("0"))
-
                                     {
                                         <img src="images/yellow.gif" height="10pt" alt="Unread Email">
                                     }
@@ -62,9 +98,8 @@
 }
 
 else
-
 {
     <div class="container my-4 text-center">
-        <p class="text-muted">Please log in to view your inbox and compose new emails.</p>
+        <p class="text-white">Please log in to view your inbox and compose new emails.</p>
     </div>
 }
