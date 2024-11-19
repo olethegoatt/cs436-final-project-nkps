@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Properties/ServiceDependencies/cs436-nkps - Zip Deploy1/profile.arm.json
+/Properties/ServiceDependencies/nkpsfinalproject - Zip Deploy/profile.arm.json
