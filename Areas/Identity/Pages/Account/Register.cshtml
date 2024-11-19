@@ -48,7 +48,7 @@
         border-radius: 10px;
         padding: 40px; /* เพิ่ม padding ใหญ่ขึ้น */
         width: 100%;
-        height: 550px; /* เพิ่มความสูงของ register card */
+        height: 700px; /* เพิ่มความสูงของ register card */
         max-width: 450px; /* เพิ่มความกว้าง */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
@@ -101,7 +101,6 @@
 
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <!-- Change label text color to the same color as Register Card -->
                             <label asp-for="Input.FirstName" class="form-label fw-bold text-primary">First Name</label>
                             <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" required />
                             <span asp-validation-for="Input.FirstName" class="text-danger"></span>
@@ -114,11 +113,11 @@
                         </div>
 
                         <div class="col-md-6">
-                            <!-- Change label text color to the same color as Register Card -->
                             <label asp-for="Input.MobilePhone" class="form-label fw-bold text-primary">Mobile Phone</label>
                             <input asp-for="Input.MobilePhone" class="form-control" autocomplete="mobilephone" required />
                             <span asp-validation-for="Input.MobilePhone" class="text-danger"></span>
                         </div>
+
 
                         <div class="col-md-6">
                             <label asp-for="Input.UserName" class="form-label fw-bold text-primary">Username</label>

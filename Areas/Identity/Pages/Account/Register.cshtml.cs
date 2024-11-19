@@ -55,22 +55,30 @@ namespace FinalProject.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            // First Name with validation to only allow letters
             [Required]
-            [StringLength(255, ErrorMessage = "The First Name must be in between 1 to 255.", MinimumLength = 1)]
+            [StringLength(255, ErrorMessage = "The First Name must be between 1 and 255 characters.", MinimumLength = 1)]
+            [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must contain only letters.")]
             public string FirstName { get; set; }
 
+            // Last Name with validation to only allow letters
             [Required]
-            [StringLength(255, ErrorMessage = "The Last Name must be in between 1 to 255.", MinimumLength = 1)]
+            [StringLength(255, ErrorMessage = "The Last Name must be between 1 and 255 characters.", MinimumLength = 1)]
+            [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Last Name must contain only letters.")]
             public string LastName { get; set; }
 
+            // Mobile Phone with validation to ensure only digits (numbers) are allowed
             [Required]
-            [StringLength(15, ErrorMessage = "The Mobile Phone must be in between 7 to 15.", MinimumLength = 7)]
+            [StringLength(15, ErrorMessage = "The Mobile Phone must be between 7 and 15 characters.", MinimumLength = 7)]
+            [RegularExpression(@"^\d+$", ErrorMessage = "Mobile Phone must contain only numbers.")]
             public string MobilePhone { get; set; }
 
+            // Username with validation
             [Required]
-            [StringLength(255, ErrorMessage = "The Username must be between 1 to 255.", MinimumLength = 1)]
+            [StringLength(255, ErrorMessage = "The Username must be between 1 and 255 characters.", MinimumLength = 1)]
             public string UserName { get; set; }
 
+            // Password with validation
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
